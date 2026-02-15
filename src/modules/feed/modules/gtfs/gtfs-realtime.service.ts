@@ -230,6 +230,7 @@ export class GtfsRealtimeService {
   ): {
     tripUpdate: ITripUpdate | undefined
     stopTimeUpdate: IStopTimeUpdate | undefined
+    vehicle: string | null
   } {
     // Filter by trip updates with:
     //   - the same trip_id and start_date *or*
@@ -248,6 +249,8 @@ export class GtfsRealtimeService {
         update.stopId === trip.stop_id,
     )
 
-    return { tripUpdate, stopTimeUpdate }
+    const vehicle = tripUpdate?.vehicle?.label ?? null
+
+    return { tripUpdate, stopTimeUpdate, vehicle }
   }
 }
