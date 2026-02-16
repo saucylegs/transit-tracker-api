@@ -432,6 +432,9 @@ export class OneBusAwayService implements FeedProvider {
 
         const color = staticRoute?.color?.replaceAll("#", "").trim() ?? null
 
+        // Do not include agency ID in vehicle number
+        const vehicle = ad.predicted ? ad.vehicleId.slice(ad.vehicleId.indexOf("_") + 1) : null
+
         tripStops.push({
           tripId: ad.tripId,
           stopId,
@@ -445,6 +448,7 @@ export class OneBusAwayService implements FeedProvider {
           ),
           arrivalTime,
           departureTime,
+          vehicle,
           isRealtime: ad.predicted ?? false,
         })
       }
