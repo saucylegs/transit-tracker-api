@@ -2,6 +2,10 @@
 
 This is an API that is intended to be used to power a live arrivals or departures board, like [this one](https://github.com/EastsideUrbanism/transit-countdown-clock). Given a source transit feed, it will provide a WebSocket-based API that can be used to subscribe to schedule data for specific routes and stops. It can support multiple feeds at once.
 
+## Fork information
+
+The only significant change from the [original version](https://github.com/tjhorner/transit-tracker-api) of this API is that this version will transmit the public identifier (i.e., coach number) of the vehicle operating each trip, for trips with real-time information. A live instance of this API is available for Pullman Transit at https://pttracker.saucylegs.me/. [My fork of the ESPHome firmware](https://github.com/saucylegs/esphome-transit-tracker) is tailored to use this version of the API.
+
 ## Installation
 
 The service is distributed as a Docker image that runs on port 3000 by default. You can learn how to deploy it with the [Docker deployment guide](./docs/deployment/deploy-docker.md).
@@ -104,6 +108,7 @@ Once subscribed, you will receive updates to your desired schedule in the follow
         "headsign": "Eastgate P&R",
         "arrivalTime": 1737346216,
         "departureTime": 1737346216,
+        "vehicle": "7323",
         "isRealtime": true
       },
       {
@@ -115,6 +120,7 @@ Once subscribed, you will receive updates to your desired schedule in the follow
         "headsign": "Bellevue Transit Center",
         "arrivalTime": 1737346424,
         "departureTime": 1737346424,
+        "vehicle": "7376",
         "isRealtime": true
       },
       {
@@ -126,6 +132,7 @@ Once subscribed, you will receive updates to your desired schedule in the follow
         "headsign": "Bellevue Transit Center",
         "arrivalTime": 1737347652,
         "departureTime": 1737347652,
+        "vehicle": "7455",
         "isRealtime": true
       }
     ]
