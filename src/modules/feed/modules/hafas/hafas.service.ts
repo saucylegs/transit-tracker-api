@@ -154,10 +154,6 @@ export class HafasService implements FeedProvider {
     })
   }
 
-  listStops(): Promise<Stop[]> {
-    throw new Error("Method not implemented.")
-  }
-
   getStop(stopId: string): Promise<Stop> {
     throw new Error("Method not implemented.")
   }
