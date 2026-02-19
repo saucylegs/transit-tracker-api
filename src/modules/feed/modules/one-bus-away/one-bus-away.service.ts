@@ -367,6 +367,16 @@ export class OneBusAwayService implements FeedProvider {
       `${routeShortName}: `,
     ])
   }
+  
+  private getTripBlockId(
+    arrivalsAndDeparturesResp: OnebusawaySDK.ArrivalAndDeparture.ArrivalAndDepartureListResponse,
+    ad: OnebusawaySDK.ArrivalAndDeparture.ArrivalAndDepartureListResponse.Data.Entry.ArrivalsAndDeparture
+  ): string | null {
+    const trip = arrivalsAndDeparturesResp.data.references.trips.find(
+      (t) => t.id === ad.tripId,
+    )
+    return trip?.blockId ?? null
+  }
 
   async getUpcomingTripsForRoutesAtStops(
     routes: RouteAtStop[],
@@ -432,8 +442,11 @@ export class OneBusAwayService implements FeedProvider {
 
         const color = staticRoute?.color?.replaceAll("#", "").trim() ?? null
 
-        // Do not include agency ID in vehicle number
-        const vehicle = ad.predicted ? ad.vehicleId.slice(ad.vehicleId.indexOf("_") + 1) : null
+        // When OneBusAway does not have a proper vehicle ID, they set it equal to the trip's block ID
+        const vehicle = 
+          ad.predicted && ad.vehicleId !== this.getTripBlockId(arrivalsAndDeparturesResp, ad)
+            ? ad.vehicleId.slice(ad.vehicleId.indexOf("_") + 1) // Do not include agency prefix
+            : null
 
         tripStops.push({
           tripId: ad.tripId,

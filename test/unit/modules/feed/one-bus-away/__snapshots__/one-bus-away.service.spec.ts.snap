@@ -39,7 +39,7 @@ exports[`OneBusAwayService > getUpcomingTripsForRoutesAtStops > gets trips for t
     "stopId": "1_71971",
     "stopName": "NE Redmond Way & Bear Creek Pkwy",
     "tripId": "1_766488959",
-    "vehicle": "7896588",
+    "vehicle": null,
   },
   {
     "arrivalTime": 2025-12-17T05:09:06.000Z,
@@ -52,7 +52,7 @@ exports[`OneBusAwayService > getUpcomingTripsForRoutesAtStops > gets trips for t
     "stopId": "1_71971",
     "stopName": "NE Redmond Way & Bear Creek Pkwy",
     "tripId": "1_720962789",
-    "vehicle": "7896529",
+    "vehicle": null,
   },
   {
     "arrivalTime": 2025-12-17T04:41:00.000Z,
@@ -65,7 +65,7 @@ exports[`OneBusAwayService > getUpcomingTripsForRoutesAtStops > gets trips for t
     "stopId": "1_72476",
     "stopName": "NE 76th St & 164th Ave NE - Bay 1",
     "tripId": "1_721019209",
-    "vehicle": "7896811",
+    "vehicle": null,
   },
   {
     "arrivalTime": 2025-12-17T04:57:00.000Z,
